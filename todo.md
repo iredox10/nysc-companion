@@ -1,0 +1,1 @@
+in this project we're going to have many admins. The states admin will be able to upload info for their specific state and even assign new admins that will represent lga, that will be able to upload info to the system, and have their own leverage. then we're going to have superadmin that will be oversighting the whole project and have permission for the whole project

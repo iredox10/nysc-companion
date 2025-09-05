@@ -1,0 +1,132 @@
+import { UserProfile, Listing, Category, State, LGA } from '@/types';
+
+export const mockUser: any = {
+  $id: '1',
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+};
+
+export const mockProfile: UserProfile = {
+  name: 'John Doe',
+  deploymentStateId: '2',
+  deploymentLgaId: '2',
+};
+
+export const mockStates: (any & State)[] = [
+    { $id: '1', name: 'Abia' },
+    { $id: '2', name: 'Lagos' },
+    { $id: '3', name: 'Kano' },
+    { $id: '4', name: 'Rivers' },
+    { $id: '5', name: 'FCT' },
+    { $id: '6', name: 'Ogun' },
+];
+
+export const mockLgas: (any & LGA)[] = [
+    { $id: '1', name: 'Aba North', stateId: '1' },
+    { $id: '2', name: 'Ikeja', stateId: '2' },
+    { $id: '3', name: 'Aba South', stateId: '1' },
+    { $id: '4', name: 'Lagos Island', stateId: '2' },
+    { $id: '5', name: 'Kano Municipal', stateId: '3' },
+    { $id: '6', name: 'Port Harcourt', stateId: '4' },
+    { $id: '7', name: 'Abuja Municipal', stateId: '5' },
+    { $id: '8', name: 'Abeokuta South', stateId: '6' },
+];
+
+export const mockCategories: (any & Category)[] = [
+  { $id: '1', name: 'Accommodation' },
+  { $id: '2', name: 'NYSC Offices' },
+  { $id: '3', name: 'Restaurants' },
+];
+
+export const mockListings: (any & Listing)[] = [
+  {
+    $id: '1',
+    name: 'Corper\'s Lodge',
+    address: '123 Main St, Ikeja',
+    description: 'A nice place for corpers to stay during their service year. Clean rooms, affordable rates, and safe environment.',
+    categoryId: '1',
+    lgaId: '2',
+    latitude: 6.6018,
+    longitude: 3.3515,
+    contactInfo: '123-456-7890',
+    phone: '123-456-7890',
+    email: 'info@corperslodge.com',
+    hours: 'Mon-Sun: 24 hours',
+    imageUrls: [],
+  },
+  {
+    $id: '2',
+    name: 'NYSC Secretariat Lagos',
+    address: '456 Secretariat Rd, Ikeja',
+    description: 'The main office for NYSC in Lagos. Handle all official matters here.',
+    categoryId: '2',
+    lgaId: '2',
+    latitude: 6.6018,
+    longitude: 3.3515,
+    contactInfo: '098-765-4321',
+    phone: '098-765-4321',
+    email: 'lagos@nysc.gov.ng',
+    hours: 'Mon-Fri: 8AM-4PM',
+    imageUrls: [],
+  },
+  {
+    $id: '3',
+    name: 'Tasty Bites',
+    address: '789 Food Avenue, Aba North',
+    description: 'Affordable and delicious meals for corpers and locals alike.',
+    categoryId: '3',
+    lgaId: '1',
+    latitude: 5.1167,
+    longitude: 7.3667,
+    contactInfo: '111-222-3333',
+    phone: '111-222-3333',
+    email: 'contact@tastybites.com',
+    hours: 'Mon-Sat: 7AM-10PM',
+    imageUrls: [],
+  },
+  {
+    $id: '4',
+    name: 'NYSC Secretariat Abia',
+    address: '12 Government House Rd, Aba South',
+    description: 'NYSC state office for Abia state operations.',
+    categoryId: '2',
+    lgaId: '3',
+    latitude: 5.1167,
+    longitude: 7.3667,
+    contactInfo: '234-567-8901',
+    phone: '234-567-8901',
+    email: 'abia@nysc.gov.ng',
+    hours: 'Mon-Fri: 8AM-4PM',
+    imageUrls: [],
+  },
+  {
+    $id: '5',
+    name: 'Lagos Island Hostel',
+    address: '45 Marina Street, Lagos Island',
+    description: 'Budget-friendly accommodation in the heart of Lagos.',
+    categoryId: '1',
+    lgaId: '4',
+    latitude: 6.4550,
+    longitude: 3.4240,
+    contactInfo: '345-678-9012',
+    phone: '345-678-9012',
+    email: 'info@lagosislandhostel.com',
+    hours: 'Mon-Sun: 24 hours',
+    imageUrls: [],
+  },
+  {
+    $id: '6',
+    name: 'Kano Spice Restaurant',
+    address: '78 Market Road, Kano Municipal',
+    description: 'Authentic northern Nigerian cuisine and local dishes.',
+    categoryId: '3',
+    lgaId: '5',
+    latitude: 12.0022,
+    longitude: 8.5920,
+    contactInfo: '456-789-0123',
+    phone: '456-789-0123',
+    email: 'info@kanospice.com',
+    hours: 'Mon-Sun: 6AM-11PM',
+    imageUrls: [],
+  },
+];
