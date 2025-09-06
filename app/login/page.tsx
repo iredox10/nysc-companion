@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-// import { account } from '@/lib/appwrite';
 import { useRouter } from 'next/navigation';
-// import { AppwriteException } from 'appwrite';
 import Link from 'next/link';
 
 const LoginPage = () => {
@@ -18,8 +16,6 @@ const LoginPage = () => {
     
     // Mock login logic
     if (email === 'test@example.com' && password === 'password123') {
-      // In a real app, you would set some session state here.
-      // For now, we'll just redirect to the main page for a logged-in user.
       router.push('/corper');
     } else {
       setError('Invalid email or password');
@@ -27,49 +23,76 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Login</h2>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              required
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Sign In
-            </button>
-            <Link href="/signup" className="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800">
-              Don't have an account?
+    <div className="min-h-screen flex bg-gray-50">
+      {/* Left Side: Branding and Info */}
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-green-500 to-teal-600 items-center justify-center p-12 text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-green-300 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-teal-300 rounded-full filter blur-3xl opacity-50 animate-pulse animation-delay-2000"></div>
+        <div className="z-10">
+          <h1 className="text-5xl font-black tracking-tighter mb-4">NYSC Companion</h1>
+          <p className="text-xl max-w-md">
+            Welcome back! Access the ultimate toolkit for your service year.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side: Login Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12">
+        <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back!</h2>
+          <p className="text-gray-600 mb-8">Please enter your details to sign in.</p>
+          
+          {error && <p className="bg-red-100 text-red-700 p-3 rounded-lg text-center mb-4">{error}</p>}
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+                required
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+                required
+                placeholder="••••••••"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <a href="#" className="text-sm text-green-600 hover:underline">Forgot Password?</a>
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+          
+          <p className="text-center text-gray-600 mt-8">
+            Don't have an account?{' '}
+            <Link href="/signup" className="font-bold text-green-600 hover:underline">
+              Sign Up
             </Link>
-          </div>
-        </form>
+          </p>
+        </div>
       </div>
     </div>
   );
