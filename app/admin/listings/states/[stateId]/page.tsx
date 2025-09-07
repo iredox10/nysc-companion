@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
+import AddListingModal from '@/components/admin/AddListingModal';
 import { mockStates, mockLgas, mockListings } from '@/data/mock';
 import { FaPlus, FaMapMarkerAlt, FaSearch, FaBuilding, FaArrowRight, FaChevronRight, FaList, FaDownload, FaArrowLeft, FaGlobe, FaCheck, FaClock, FaTimes, FaExclamationTriangle } from 'react-icons/fa';
 
@@ -12,8 +13,14 @@ const AdminStatePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [state, setState] = useState<any>(null);
   const [stateLgas, setStateLgas] = useState<any[]>([]);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const stateId = params.stateId as string;
+
+  const handleAddListing = (listing: any) => {
+    console.log('New listing added:', listing);
+    alert('Listing created successfully! It will be reviewed before being published.');
+  };
 
   useEffect(() => {
     // Find the state
@@ -151,7 +158,10 @@ const AdminStatePage = () => {
       {/* Actions */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
         <div className="flex gap-3 mb-4 lg:mb-0">
-          <button className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium">
+          <button 
+            onClick={() => setIsAddModalOpen(true)}
+            className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium"
+          >
             <FaPlus />
             Add New Listing
           </button>
@@ -264,6 +274,14 @@ const AdminStatePage = () => {
           })}
         </div>
       )}
+      
+      {/* Add Listing Modal */}
+      <AddListingModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSubmit={handleAddListing}
+        preselectedState={stateId}
+      />
     </AdminLayout>
   );
 };

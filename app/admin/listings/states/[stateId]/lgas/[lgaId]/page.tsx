@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
+import AddListingModal from '@/components/admin/AddListingModal';
 import { mockStates, mockLgas, mockListings, mockCategories } from '@/data/mock';
 import { FaPlus, FaEdit, FaTrash, FaMapMarkerAlt, FaList, FaSearch, FaFilter, FaEye, FaCheck, FaTimes, FaClock, FaExclamationTriangle, FaDownload, FaStar, FaHome, FaUtensils, FaBus, FaMedkit, FaShoppingBag, FaFilm, FaBuilding, FaArrowLeft } from 'react-icons/fa';
 
@@ -16,9 +17,15 @@ const AdminLgaListingsPage = () => {
   const [state, setState] = useState<any>(null);
   const [lga, setLga] = useState<any>(null);
   const [listings, setListings] = useState<any[]>([]);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const stateId = params.stateId as string;
   const lgaId = params.lgaId as string;
+
+  const handleAddListing = (listing: any) => {
+    console.log('New listing added:', listing);
+    alert('Listing created successfully! It will be reviewed before being published.');
+  };
 
   useEffect(() => {
     // Find the state
@@ -142,7 +149,10 @@ const AdminLgaListingsPage = () => {
             </p>
           </div>
           <div className="mt-4 lg:mt-0 flex gap-3">
-            <button className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium">
+            <button 
+              onClick={() => setIsAddModalOpen(true)}
+              className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium"
+            >
               <FaPlus />
               Add New Listing
             </button>
@@ -421,6 +431,15 @@ const AdminLgaListingsPage = () => {
           </div>
         </div>
       )}
+      
+      {/* Add Listing Modal */}
+      <AddListingModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSubmit={handleAddListing}
+        preselectedState={stateId}
+        preselectedLga={lgaId}
+      />
     </AdminLayout>
   );
 };

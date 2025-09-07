@@ -3,12 +3,21 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
+import AddListingModal from '@/components/admin/AddListingModal';
 import { mockStates, mockLgas, mockListings, mockCategories } from '@/data/mock';
 import { FaPlus, FaMapMarkerAlt, FaSearch, FaBuilding, FaArrowRight, FaChevronRight, FaUsers, FaList, FaDownload } from 'react-icons/fa';
 
 const AdminStatesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const handleAddListing = (listing: any) => {
+    console.log('New listing added:', listing);
+    // Here you would typically send the data to your backend
+    // For now, we'll just log it and show a success message
+    alert('Listing created successfully! It will be reviewed before being published.');
+  };
 
   // Nigerian regions mapping
   const regions = {
@@ -76,7 +85,10 @@ const AdminStatesPage = () => {
             <p className="text-gray-600">Manage listings organized by states and local governments</p>
           </div>
           <div className="mt-4 lg:mt-0 flex gap-3">
-            <button className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium">
+            <button 
+              onClick={() => setIsAddModalOpen(true)}
+              className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium"
+            >
               <FaPlus />
               Add New Listing
             </button>
@@ -275,6 +287,13 @@ const AdminStatesPage = () => {
           </button>
         </div>
       )}
+      
+      {/* Add Listing Modal */}
+      <AddListingModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSubmit={handleAddListing}
+      />
     </AdminLayout>
   );
 };
