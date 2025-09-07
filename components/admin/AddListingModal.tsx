@@ -199,7 +199,7 @@ const AddListingModal: React.FC<AddListingModalProps> = ({
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-gray-900 placeholder-gray-500 bg-white ${
+                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
                       errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
                     }`}
                     placeholder="Enter business name"
@@ -285,7 +285,7 @@ const AddListingModal: React.FC<AddListingModalProps> = ({
                   name="address"
                   value={formData.address}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-gray-900 placeholder-gray-500 bg-white ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
                     errors.address ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                   placeholder="Enter street address"
@@ -376,7 +376,7 @@ const AddListingModal: React.FC<AddListingModalProps> = ({
                   name="hours"
                   value={formData.hours}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-gray-900 placeholder-gray-500 bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                   placeholder="e.g., Mon-Fri: 9AM-5PM, Sat: 10AM-2PM"
                 />
               </div>
@@ -394,7 +394,7 @@ const AddListingModal: React.FC<AddListingModalProps> = ({
                   value={formData.description}
                   onChange={handleInputChange}
                   rows={4}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none text-gray-900 placeholder-gray-500 bg-white ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none ${
                     errors.description ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                   placeholder="Describe the business, services offered, and what makes it special for NYSC members..."
