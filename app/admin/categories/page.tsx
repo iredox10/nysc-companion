@@ -2,11 +2,49 @@
 
 import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
+import AddCategoryModal from '@/components/admin/AddCategoryModal';
+import ViewCategoryModal from '@/components/admin/ViewCategoryModal';
+import EditCategoryModal from '@/components/admin/EditCategoryModal';
 import { mockCategories, mockListings } from '@/data/mock';
 import { FaPlus, FaEdit, FaTrash, FaHome, FaUtensils, FaBus, FaMedkit, FaShoppingBag, FaFilm, FaBuilding, FaEye, FaChartBar, FaSearch, FaPalette } from 'react-icons/fa';
 
 const CategoriesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [categories, setCategories] = useState(mockCategories);
+
+  const handleAddCategory = (newCategory: any) => {
+    console.log('New category added:', newCategory);
+    setCategories(prev => [...prev, newCategory]);
+    alert('Category created successfully!');
+  };
+
+  const handleViewCategory = (category: any) => {
+    setSelectedCategory(category);
+    setIsViewModalOpen(true);
+  };
+
+  const handleEditCategory = (category: any) => {
+    setSelectedCategory(category);
+    setIsEditModalOpen(true);
+  };
+
+  const handleUpdateCategory = (updatedCategory: any) => {
+    console.log('Category updated:', updatedCategory);
+    setCategories(prev => prev.map(cat => 
+      cat.$id === updatedCategory.$id ? updatedCategory : cat
+    ));
+    alert('Category updated successfully!');
+  };
+
+  const handleDeleteCategory = (categoryId: string) => {
+    console.log('Category deleted:', categoryId);
+    setCategories(prev => prev.filter(cat => cat.$id !== categoryId));
+    alert('Category deleted successfully!');
+  };
 
   // Icon mapping
   const iconMap: { [key: string]: any } = {
@@ -25,7 +63,7 @@ const CategoriesPage = () => {
   };
 
   // Filter categories based on search
-  const filteredCategories = mockCategories.filter(category =>
+  const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -49,7 +87,7 @@ const CategoriesPage = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <div className="text-2xl font-black mb-1">{mockCategories.length}</div>
+              <div className="text-2xl font-black mb-1">{categories.length}</div>
               <div className="text-sm opacity-80">Total Categories</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
@@ -58,7 +96,7 @@ const CategoriesPage = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <div className="text-2xl font-black mb-1">
-                {mockCategories.length > 0 ? Math.round(mockListings.length / mockCategories.length) : 0}
+                {categories.length > 0 ? Math.round(mockListings.length / categories.length) : 0}
               </div>
               <div className="text-sm opacity-80">Avg per Category</div>
             </div>
@@ -69,7 +107,10 @@ const CategoriesPage = () => {
       {/* Actions and Search */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
         <div className="flex gap-3 mb-4 lg:mb-0">
-          <button className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium">
+          <button 
+            onClick={() => setIsAddModalOpen(true)}
+            className="bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-green-700 transition shadow-lg font-medium"
+          >
             <FaPlus />
             Add New Category
           </button>
@@ -98,7 +139,7 @@ const CategoriesPage = () => {
           <FaPalette className="text-6xl text-gray-300 mx-auto mb-6" />
           <h3 className="text-2xl font-bold text-gray-700 mb-4">No categories found</h3>
           <p className="text-gray-500 max-w-md mx-auto mb-8">
-            {mockCategories.length === 0 
+            {categories.length === 0 
               ? "No categories have been created yet. Add your first category to get started."
               : "Try adjusting your search terms to find what you're looking for."
             }
@@ -107,7 +148,7 @@ const CategoriesPage = () => {
             onClick={() => setSearchTerm('')}
             className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300"
           >
-            {mockCategories.length === 0 ? 'Add First Category' : 'Clear Search'}
+            {categories.length === 0 ? 'Add First Category' : 'Clear Search'}
           </button>
         </div>
       ) : (
@@ -188,15 +229,24 @@ const CategoriesPage = () => {
 
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-blue-50 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-100 transition font-medium text-sm flex items-center justify-center gap-2">
+                    <button 
+                      onClick={() => handleViewCategory(category)}
+                      className="flex-1 bg-blue-50 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-100 transition font-medium text-sm flex items-center justify-center gap-2"
+                    >
                       <FaEye />
                       View
                     </button>
-                    <button className="flex-1 bg-gray-50 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium text-sm flex items-center justify-center gap-2">
+                    <button 
+                      onClick={() => handleEditCategory(category)}
+                      className="flex-1 bg-gray-50 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium text-sm flex items-center justify-center gap-2"
+                    >
                       <FaEdit />
                       Edit
                     </button>
-                    <button className="bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 transition font-medium text-sm flex items-center justify-center">
+                    <button 
+                      onClick={() => handleDeleteCategory(category.$id)}
+                      className="bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 transition font-medium text-sm flex items-center justify-center"
+                    >
                       <FaTrash />
                     </button>
                   </div>
@@ -282,18 +332,21 @@ const CategoriesPage = () => {
                     <td className="p-4">
                       <div className="flex items-center gap-2">
                         <button 
+                          onClick={() => handleViewCategory(category)}
                           title="View Details"
                           className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         >
                           <FaEye />
                         </button>
                         <button 
+                          onClick={() => handleEditCategory(category)}
                           title="Edit Category"
                           className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                         >
                           <FaEdit />
                         </button>
                         <button 
+                          onClick={() => handleDeleteCategory(category.$id)}
                           title="Delete Category"
                           className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         >
@@ -308,6 +361,30 @@ const CategoriesPage = () => {
           </table>
         </div>
       </div>
+      
+      {/* Add Category Modal */}
+      <AddCategoryModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSubmit={handleAddCategory}
+      />
+      
+      {/* View Category Modal */}
+      <ViewCategoryModal
+        isOpen={isViewModalOpen}
+        onClose={() => setIsViewModalOpen(false)}
+        category={selectedCategory}
+        onEdit={handleEditCategory}
+        onDelete={handleDeleteCategory}
+      />
+      
+      {/* Edit Category Modal */}
+      <EditCategoryModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onSubmit={handleUpdateCategory}
+        category={selectedCategory}
+      />
     </AdminLayout>
   );
 };
