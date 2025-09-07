@@ -34,6 +34,10 @@ export interface Listing {
   hours?: string;
   imageUrls?: string[];
   rating?: number;
+  status?: 'pending' | 'approved' | 'rejected' | 'flagged';
+  views?: number;
+  submittedBy?: string;
+  submittedDate?: string;
 }
 
 export interface Review {
