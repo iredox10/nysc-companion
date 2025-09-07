@@ -76,6 +76,7 @@ export const mockListings = [
     $id: 'list1',
     name: 'Green Valley Lodge',
     categoryId: 'cat1',
+    lgaId: '7', // Abuja Municipal
     address: '15 Stadium Road, Ilorin',
     contactInfo: '+234 803 456 7890',
     website: 'https://greenvalleylodge.com',
@@ -86,6 +87,7 @@ export const mockListings = [
     $id: 'list2',
     name: 'Corpers Corner Restaurant',
     categoryId: 'cat2',
+    lgaId: '2', // Ikeja
     address: '7 Ibrahim Taiwo Road, Ilorin',
     contactInfo: '+234 905 678 1234',
     description: 'Budget-friendly restaurant catering specifically to corps members with NYSC discount. Serves local and continental dishes with weekly specials. Relaxed environment for socializing and networking with other corps members. Offers takeaway and small events catering services.',
@@ -95,6 +97,7 @@ export const mockListings = [
     $id: 'list3',
     name: 'City Shuttle Service',
     categoryId: 'cat3',
+    lgaId: '4', // Lagos Island
     address: 'Central Bus Park, Ilorin',
     contactInfo: '+234 812 345 6789',
     website: 'https://cityshuttle.ng',
@@ -105,6 +108,7 @@ export const mockListings = [
     $id: 'list4',
     name: 'Community Health Center',
     categoryId: 'cat4',
+    lgaId: '6', // Port Harcourt
     address: '23 University Road, Ilorin',
     contactInfo: '+234 705 432 1098',
     description: 'Healthcare facility providing primary care services with NYSC ID discount. Services include general consultation, minor treatments, and preventive care. Has partnerships with major hospitals for referrals. Opens 7 days a week with 24-hour emergency line.',
@@ -114,6 +118,7 @@ export const mockListings = [
     $id: 'list5',
     name: 'Metro Supermarket',
     categoryId: 'cat5',
+    lgaId: '5', // Kano Municipal
     address: '45 GRA Road, Ilorin',
     contactInfo: '+234 809 876 5432',
     website: 'https://metrosupermarket.com',
@@ -124,6 +129,7 @@ export const mockListings = [
     $id: 'list6',
     name: 'Citizen Recreation Center',
     categoryId: 'cat6',
+    lgaId: '8', // Abeokuta South
     address: '12 Cinema Road, Ilorin',
     contactInfo: '+234 701 234 5678',
     description: 'Entertainment venue with various recreational facilities including movie screenings, game rooms, and sports courts. Regular events for young professionals and corps members. NYSC night every Thursday with special rates and activities. Membership plans available with significant discounts.',
@@ -133,6 +139,7 @@ export const mockListings = [
     $id: 'list7',
     name: 'Corpers Haven',
     categoryId: 'cat1',
+    lgaId: '1', // Aba North
     address: '78 College Road, Ilorin',
     contactInfo: '+234 808 765 4321',
     description: 'Purpose-built accommodation complex for corps members featuring shared apartments and single rooms. All utilities included with standby generator. Dedicated study areas, communal kitchen, and recreation space. Security personnel and CCTV surveillance. Monthly cleaning service included.',
@@ -142,6 +149,7 @@ export const mockListings = [
     $id: 'list8',
     name: 'Mama\'s Kitchen',
     categoryId: 'cat2',
+    lgaId: '3', // Aba South
     address: '56 Market Street, Ilorin',
     contactInfo: '+234 903 210 9876',
     description: 'Home-style cooking with affordable daily meal plans. Famous for local dishes at budget-friendly prices. Clean environment with outdoor seating area. Monthly subscription available with free delivery to nearby corps lodges and apartments. Special weekend menu with regional specialties.',

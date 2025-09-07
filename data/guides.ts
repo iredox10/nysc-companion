@@ -1,17 +1,29 @@
 export interface Guide {
+    id?: string;
     slug: string;
     title: string;
     description: string;
     category: string;
     content: string;
+    difficulty?: 'beginner' | 'intermediate' | 'advanced';
+    readTime?: number;
+    rating?: number;
+    likes?: number;
+    createdAt?: string;
   }
   
   export const guides: Guide[] = [
     {
+      id: 'guide1',
       slug: 'pre-orientation-camp-checklist',
       title: 'The Ultimate Pre-Orientation Camp Checklist',
       description: 'Everything you need to pack and prepare for the 3-week orientation camp. Dont leave anything essential behind!',
       category: 'Pre-Camp',
+      difficulty: 'beginner',
+      readTime: 8,
+      rating: 4.8,
+      likes: 125,
+      createdAt: '2024-01-15',
       content: `
         <h2 class="text-2xl font-bold mb-4">Introduction</h2>
         <p class="mb-4">Getting ready for the NYSC orientation camp can be both exciting and overwhelming. This checklist will ensure you have everything you need for a smooth and comfortable 3-week experience.</p>
@@ -53,10 +65,16 @@ export interface Guide {
       `
     },
     {
+      id: 'guide2',
       slug: 'surviving-ppa-posting',
       title: 'How to Survive and Thrive After Your PPA Posting',
       description: 'Got your PPA letter? Heres what to do next to settle in quickly and make a great first impression.',
       category: 'Post-Camp',
+      difficulty: 'intermediate',
+      readTime: 6,
+      rating: 4.5,
+      likes: 89,
+      createdAt: '2024-01-20',
       content: `
         <h2 class="text-2xl font-bold mb-4">You've Got Your PPA! Now What?</h2>
         <p class="mb-4">The post-camp period is crucial. Your actions in the first few weeks at your Place of Primary Assignment (PPA) can set the tone for your entire service year.</p>
@@ -75,10 +93,16 @@ export interface Guide {
       `
     },
     {
+      id: 'guide3',
       slug: 'cds-groups-explained',
       title: 'Understanding Community Development Service (CDS) Groups',
       description: 'CDS is a mandatory part of NYSC. Learn what it is, why it matters, and how to choose the right group for you.',
       category: 'Service Year',
+      difficulty: 'beginner',
+      readTime: 5,
+      rating: 4.3,
+      likes: 67,
+      createdAt: '2024-01-25',
       content: `
         <h2 class="text-2xl font-bold mb-4">What is CDS?</h2>
         <p class="mb-4">Community Development Service (CDS) is one of the four cardinal programs of the NYSC. It's a platform for corps members to contribute to the development of their host communities.</p>
