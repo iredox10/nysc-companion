@@ -143,7 +143,7 @@ const AdminLoginPage = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all backdrop-blur-sm"
+                      className="w-full pl-12 pr-4 py-4 bg-white text-black border border-gray-300 rounded-xl  placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all"
                       placeholder="admin@nysc.com"
                       required
                     />
@@ -163,7 +163,7 @@ const AdminLoginPage = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all backdrop-blur-sm"
+                      className="w-full pl-12 pr-12 py-4 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all"
                       placeholder="Enter your password"
                       required
                     />
